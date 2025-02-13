@@ -1,0 +1,78 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #0b1522;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Затемнення для центрального серця */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0b1522;
+    top: 0;
+    left: 0;
+    z-index: 5; /* Менший, щоб JS серця були поверх */
+}
+
+/* Серця */
+.heart {
+    height: 70px;
+    width: 70px;
+    background: #f20044;
+    position: absolute;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px #f20044;
+    animation: heart 0.6s linear infinite;
+    z-index: 10; /* Серця над затемненням */
+}
+
+@keyframes heart {
+    0% { transform: rotate(-45deg) scale(1.07); }
+    80% { transform: rotate(-45deg) scale(1.0); }
+    100% { transform: rotate(-45deg) scale(0.8); }
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background: #f20044;
+    border-radius: 50px;
+    box-shadow: -10px 10px 90px #f20044;
+}
+
+.heart::before { top: -50%; }
+.heart::after { right: -50%; }
+
+/* Картка (відкритка) */
+.card {
+    position: absolute;
+    width: 90%;
+    max-width: 500px;
+    height: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #f20044;
+    text-align: center;
+    z-index: 20; /* Поверх усього */
+}
+
